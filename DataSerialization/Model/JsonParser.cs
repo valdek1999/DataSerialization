@@ -16,24 +16,19 @@ namespace DataSerialization.Model
 
         public T EntityDeserialized { get; private set; }
 
-        public string xmlpath { get; set; }
-
-        public string jsonpath { get;set; }
         public XmlParser(IConfigurationRoot configuraton)
         {
             _configuraton = configuraton;
-            xmlpath = _configuraton["xmlpath"];
-            jsonpath = _configuraton["jsonpath"];
         }
         public string XmlToJson()
         {
 
-            using(var file = new FileStream(xmlpath, FileMode.Open))
+            using(var file = new FileStream(_configuraton["xmlpath"], FileMode.Open))
             {
                 EntityDeserialized = serializer.Deserialize(file) as T;
             }
             var data = JsonConvert.SerializeObject(EntityDeserialized);
-            using(StreamWriter sw = new StreamWriter(jsonpath, false, System.Text.Encoding.Default))
+            using(StreamWriter sw = new StreamWriter(_configuraton["jsonpath"], false, System.Text.Encoding.Default))
             {
                 sw.WriteLine(data);
             }
