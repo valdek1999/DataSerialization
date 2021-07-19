@@ -1,14 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Xml.Serialization;
 
 namespace DataSerialization.Model
 {
-[System.SerializableAttribute()]
+[SerializableAttribute()]
 [System.ComponentModel.DesignerCategoryAttribute("code")]
-[System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
-[System.Xml.Serialization.XmlRootAttribute(Namespace = "", IsNullable = false)]
-public partial class Root
+[XmlTypeAttribute(AnonymousType = true)]
+[XmlRootAttribute(ElementName ="Root",Namespace = "", IsNullable = false)]
+public partial class Data
 {
 
     private RootGlobalData globalDataField;

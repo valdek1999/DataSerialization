@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace DataSerialization.Interfaces
+namespace DynamicDataSerialization.Model
 {
-    class IFormatStrategy
+    class DynamicXmlParser
     {
     }
 }

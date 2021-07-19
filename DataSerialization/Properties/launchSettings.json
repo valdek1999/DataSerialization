@@ -1,0 +1,11 @@
+{
+  "profiles": {
+    "DataSerialization": {
+      "commandName": "Project",
+      "workingDirectory": "C:\\Users\\HardFoxy\\source\\repos\\DataSerialization\\DataSerialization",
+      "environmentVariables": {
+        "config_name": "config.json"
+      }
+    }
+  }
+}

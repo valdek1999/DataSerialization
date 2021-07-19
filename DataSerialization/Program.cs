@@ -10,10 +10,10 @@ namespace DataSerialization
 {
     class Program
     {
-        static readonly string pathConfig = "config.json";
+        static readonly string pathConfig = Environment.GetEnvironmentVariable("config_name");
         static void Main(string[] args)
         {
-            XmlParser<Root> xmlParser = new XmlParser<Root>(new ConfigurationBuilder()
+            XmlParser<Data> xmlParser = new XmlParser<Data>(new ConfigurationBuilder()
                 .AddJsonFile(pathConfig)
                 .Build());
             xmlParser.XmlToJson();          
