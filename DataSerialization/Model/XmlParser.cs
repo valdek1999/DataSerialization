@@ -10,31 +10,29 @@ namespace DataSerialization.Model
 {
     class XmlParser<T> where T : class, new()
     {
-        public IConfiguration _configuraton { get; private set; }
+        public IConfiguration Сonfiguraton { get; private set; }
 
-        private XmlSerializer serializer = new XmlSerializer(typeof(T));
+        private XmlSerializer _serializer = new XmlSerializer(typeof(T));
 
         public T EntityDeserialized { get; private set; }
 
         public XmlParser(IConfigurationRoot configuraton)
         {
-            _configuraton = configuraton;
+            Сonfiguraton = configuraton;
         }
         public string XmlToJson()
         {
 
-            using(var file = new FileStream(_configuraton["xmlpath"], FileMode.Open))
+            using(var file = new FileStream(Сonfiguraton["xmlpath"], FileMode.Open))
             {
-                EntityDeserialized = serializer.Deserialize(file) as T;
+                EntityDeserialized = _serializer.Deserialize(file) as T;
             }
             var data = JsonConvert.SerializeObject(EntityDeserialized);
-            using(StreamWriter sw = new StreamWriter(_configuraton["jsonpath"], false, System.Text.Encoding.Default))
+            using(StreamWriter sw = new StreamWriter(Сonfiguraton["jsonpath"], false, System.Text.Encoding.Default))
             {
                 sw.WriteLine(data);
             }
             return data;
         }
-
-
     }
 }
